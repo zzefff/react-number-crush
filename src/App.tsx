@@ -3,7 +3,7 @@ import './App.scss';
 import Block from './Block';
 import { BlockProps, AppProps } from './types/index';
 import useBlocks from './hooks/useBlocks';
-import useDarkMode from './hooks/useDarkMode';
+// import useDarkMode from './hooks/useDarkMode';
 
 function App(props: AppProps) {
   const {
@@ -11,7 +11,7 @@ function App(props: AppProps) {
     height = 4
   } = props;
   const [allBlocks, setAllBlocks, resetBlocks] = useBlocks(width, height);
-  const [isDarkMode] = useDarkMode()
+  // const [isDarkMode] = useDarkMode()
 
   const checkPossibilities = useCallback(() => {
     // 检查是否还有可点击可配对的block
@@ -90,7 +90,7 @@ function App(props: AppProps) {
 
   return (
     <div className="App">
-      <h1>{ isDarkMode ? 'dark' : 'light'} </h1>
+      {/* <h1>{ isDarkMode ? 'dark' : 'light'} </h1> */}
       <div className="tips">
         <label>可以消除的： <button onClick={ showClearable }>提示</button></label>
       </div>
