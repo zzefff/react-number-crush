@@ -1,0 +1,139 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App {
+  // perspective: 1000px;
+}
+
+.stage {
+  // transform: rotateX(10deg) rotateY(330deg);
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  perspective: 1000px;
+}
+
+.block {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: rgb(255, 146, 146);
+  }
+
+  &_Selected {
+    background-color: red;
+    transform: translateZ(30px) scale(1.1);
+    transition: transform .2s, background-color .2s;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  &_Disabled {
+    background-color: #ccc;
+    pointer-events: none;
+  }
+
+  &_Tip {
+    background-color: #0f0;
+  }
+
+  &_Clear {
+    background-color: red;
+    animation: blockCleared .4s forwards;
+    &:hover {
+      background-color: red;
+    }
+  }
+}
+
+@keyframes blockCleared {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.5);
+  }
+  18% {
+    transform: scale(1.5) rotate(0deg);
+  }
+  19% {
+    transform: scale(1.5) rotate(10deg);
+  }
+  20% {
+    transform: scale(1.5) rotate(-10deg);
+  }
+  21% {
+    transform: scale(1.5) rotate(10deg);
+  }
+  22% {
+    transform: scale(1.5) rotate(-10deg);
+  }
+  23% {
+    transform: scale(1.5) rotate(10deg);
+  }
+  24% {
+    transform: scale(1.5) rotate(-10deg);
+  }
+  25% {
+    transform: scale(1.5) rotate(10deg);
+  }
+  26% {
+    transform: scale(1.5) rotate(-10deg);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
