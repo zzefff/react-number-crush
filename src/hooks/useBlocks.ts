@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BlockProps } from '../types/index'
+import { BlockUnit } from '../types/index'
 
 const useBlocks = (width = 8, height = 4) => {  
   // 这里需要保证产生的每个值都是偶数，否则游戏无法进行
@@ -16,7 +16,7 @@ const useBlocks = (width = 8, height = 4) => {
   
   // someNode = DEFAULT[y][x]
   const DEFAULT = new Array(height).fill(0).map((item, y) => {
-    return new Array(width).fill(0).map((item, x): BlockProps => {
+    return new Array(width).fill(0).map((item, x): BlockUnit => {
       return {
         x,
         y,
@@ -28,7 +28,7 @@ const useBlocks = (width = 8, height = 4) => {
     })
   })
   
-  const updateBlocksClickable = (blocks: BlockProps[][]): BlockProps[][] => {
+  const updateBlocksClickable = (blocks: BlockUnit[][]): BlockUnit[][] => {
     const DIRECTIONS = [
       [-1, 0],
       [1, 0],
@@ -56,7 +56,7 @@ const useBlocks = (width = 8, height = 4) => {
   
   const [blocks, setBlocks] = useState(updateBlocksClickable(DEFAULT));
 
-  const updateBlocks = (blocks: BlockProps[][]) => {
+  const updateBlocks = (blocks: BlockUnit[][]) => {
     setBlocks(updateBlocksClickable(blocks));
   }
 

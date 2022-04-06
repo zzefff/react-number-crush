@@ -1,23 +1,31 @@
-import React, { AnimationEvent } from 'react';
+import React, { SyntheticEvent, useRef } from 'react';
 import { BlockProps } from './types/index';
 import classNames from 'classnames';
 
 function Block(props: BlockProps) {
     const {
+        block,
+        onSelect,
+        showTip
+    } = props;
+
+    const {
         clickable,
         value,
         selected,
-        onSelect,
         clear,
-        showTip
-    } = props;
-    
-    const onAnimationEnd = (e: AnimationEvent) => {
-        console.log(e);
+    } = block;
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    const handleSelect = (e: SyntheticEvent) => {
+        console.log(e)
+        onSelect(block);
     }
     
     return (
         <div
+        ref={ref}
         className={classNames({
             'block': true,
             'block_Disabled': !clickable,
@@ -25,8 +33,7 @@ function Block(props: BlockProps) {
             'block_Clear': clear,
             'block_Tip': showTip
         })}
-        onClick={onSelect}
-        onAnimationEndCapture={onAnimationEnd}
+        onClick={handleSelect}
         >
         {value}
         </div>
